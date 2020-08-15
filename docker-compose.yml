@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  web:
+    build: ./web
+    restart: always
+    volumes:
+      - /var/www/docker/api/web/app:/var/www/html
+    ports:
+      - 8081:80
+
+  db:
+    image: mysql
+    restart: always
+    volumes:
+      - /var/www/docker/api/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=api_db
+    ports:
+      - 33066:3306
+    command: --default-authentication-plugin=mysql_native_password
