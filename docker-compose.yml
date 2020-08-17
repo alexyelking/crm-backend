@@ -10,6 +10,13 @@ services:
     ports:
       - 8081:80
 
+  composer:
+    image: composer:1.6
+    volumes:
+      - ./application:/var/www/html
+    working_dir: /var/www/html
+    command: composer install --ignore-platform-reqs --no-scripts
+
   db:
     image: mysql
     restart: always

@@ -1,0 +1,17 @@
+# local env files
+.env
+
+# Local mysql files
+db/
+db/*
+/db/*
+/db/
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
