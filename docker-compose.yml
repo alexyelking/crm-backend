@@ -5,6 +5,8 @@ services:
   web:
     build: ./web
     restart: always
+    environment:
+      - APACHE_RUN_USER=#1000
     volumes:
       - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
     ports:

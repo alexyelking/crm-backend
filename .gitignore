@@ -1,6 +1,11 @@
 # local env files
 .env
 
+# Laravel vendor
+/app/vendor
+/app/vendor/
+/app/vendor/*
+
 # Local mysql files
 db/
 db/*
