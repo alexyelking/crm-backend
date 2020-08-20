@@ -8,23 +8,24 @@ services:
     environment:
       - APACHE_RUN_USER=#1000
     volumes:
-      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
+      - ./app:/var/www/html
+      - ./web/site.conf:/etc/apache2/sites-available/000-default.conf
     ports:
       - ${APACHE2_PORT}:80
-    working_dir: ${APP_PATH_CONTAINER}
+    working_dir: /var/www/html
 
   composer:
     image: composer:1.6
     volumes:
-      - ${APP_PATH_HOST}:${APP_PATH_CONTAINER}
-    working_dir: ${APP_PATH_CONTAINER}
+      - ./app:/var/www/html
+    working_dir: /var/www/html
     command: composer install --ignore-platform-reqs --no-scripts
 
   db:
     image: mysql
     restart: always
     volumes:
-      - ${DB_PATH_HOST}:${DB_PATH_CONTAINER}
+      - ./db:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=api_db
