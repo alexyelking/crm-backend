@@ -9,6 +9,14 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return Response::ok(["ind1" => "value"]);
+        return Response::neok(["name" => "Sasha", "state" => "NE KZ in my skin"], "hello", ["errors" => "not found"]);
+    }
+
+    public function example()
+    {
+        return response()->json([
+            'name' => 'Sasha',
+            'state' => 'KZ',
+        ]);
     }
 }

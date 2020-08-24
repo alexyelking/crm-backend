@@ -176,6 +176,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ResponseServiceProvider::class,
 
+        // Jwt
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        
     ],
 
     /*

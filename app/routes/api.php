@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post("/","API\AuthController@index");
+Route::get("/example","API\AuthController@example");

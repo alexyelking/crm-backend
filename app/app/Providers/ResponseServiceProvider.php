@@ -28,6 +28,10 @@ class ResponseServiceProvider extends ServiceProvider
             return Response::custom(0, 200, $data);
         });
 
+        Response::macro("neok", function ($data = [], $message = "", $errors = []) {
+            return Response::custom(0, 200, $data, $message, $errors);
+        });
+
         Response::macro("custom",
             function ($status = 0, $code = 200, $data = [], $message = "", $errors = []) {
 
