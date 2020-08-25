@@ -24,11 +24,13 @@ class AuthController extends Controller
     protected function register(Request $request)
     {
         $data = $request->only(['name', 'email', 'password']);
+
         User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
         return Response::ok(["Register" => "successfully"]);
     }
 
@@ -56,6 +58,10 @@ class AuthController extends Controller
      */
     public function me()
     {
+//        return response()->json([
+//            'name' => 'Sasha',
+//            'state' => 'KZ',
+//        ]);
         return response()->json(auth()->user());
     }
 
