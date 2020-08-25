@@ -23,8 +23,13 @@ use Illuminate\Support\Facades\Route;
 //Route::post("/example2","API\AuthController@example2");
 //Route::get("/example3","API\AuthController@example3");
 
-Route::post('/registration', 'API\AuthController@registration');
+
+Route::post('/register', 'API\AuthController@register');
+
 Route::post('/login', 'API\AuthController@login');
+
 Route::post('/logout', 'API\AuthController@logout');
+
 Route::post('/refresh', 'API\AuthController@refresh');
+
 Route::post('/me', 'API\AuthController@me');
