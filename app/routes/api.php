@@ -19,11 +19,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::post('/register', 'API\AuthController@register');
-
 Route::post('/login', 'API\AuthController@login');
-
 Route::post('/logout', 'API\AuthController@logout');
-
-Route::post('/refresh', 'API\AuthController@refresh');
 
 Route::get('/me', 'API\AuthController@me');

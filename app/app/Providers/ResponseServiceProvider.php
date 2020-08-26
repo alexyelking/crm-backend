@@ -24,8 +24,8 @@ class ResponseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Response::macro("ok", function ($data = []) {
-            return Response::custom(0, 200, $data);
+        Response::macro("ok", function ($data = [], $message="") {
+            return Response::custom(0, 200, $data, $message);
         });
 
         Response::macro("custom",
