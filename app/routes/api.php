@@ -18,12 +18,6 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-
-//Route::post("/example1","API\AuthController@example1");
-//Route::post("/example2","API\AuthController@example2");
-//Route::get("/example3","API\AuthController@example3");
-
-
 Route::post('/register', 'API\AuthController@register');
 
 Route::post('/login', 'API\AuthController@login');

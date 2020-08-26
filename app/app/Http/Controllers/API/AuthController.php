@@ -58,10 +58,6 @@ class AuthController extends Controller
      */
     public function me()
     {
-//        return response()->json([
-//            'name' => 'Sasha',
-//            'state' => 'KZ',
-//        ]);
         return response()->json(auth()->user());
     }
 
@@ -102,21 +98,4 @@ class AuthController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }
-
-//    public function example1()
-//    {
-//        return Response::ok(["token" => "token_name"]);
-//    }
-//    public function example2()
-//    {
-//        return Response::neok(["name" => "Sasha", "state" => "North East KaZakhstan in my skin"], "hello, its response message", ["errors" => "not found"]);
-//    }
-//
-//    public function example3()
-//    {
-//        return response()->json([
-//            'name' => 'Sasha',
-//            'state' => 'KZ',
-//        ]);
-//    }
 }
