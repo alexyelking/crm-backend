@@ -24,9 +24,24 @@ class ResponseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Response::macro("ok", function ($data = [], $message="") {
+        Response::macro("ok", function ($data = [], $message = "") {
             return Response::custom(0, 200, $data, $message);
         });
+
+        Response::macro("exception", function ($status, $code, \Exception $e, $errors = []) {
+            // Для прода
+            $err = empty($errors) ? [] : $errors;
+            $data = [];
+
+            // Для локали и дева
+            if(app()->environment(["local","development"])){
+                $err = empty($errors) ? $e->getTrace() : $errors;
+                $data = ["classname" => class_basename($e)];
+            }
+
+            return Response::custom($status, $code, $data, $e->getMessage(), $err);
+        });
+
 
         Response::macro("custom",
             function ($status = 0, $code = 200, $data = [], $message = "", $errors = []) {

@@ -19,10 +19,6 @@ class AuthControllerRegisterRequest extends FormRequest
         return true;
     }
 
-    protected function failedValidation(Validator $validator) {
-        throw new HttpResponseException(Response::custom($status = 1, $code = 401, $data = [], $message = "The operation resulted in an error", $errors = $validator->errors()));
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
