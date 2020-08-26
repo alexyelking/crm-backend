@@ -2,48 +2,68 @@
 
 namespace App\Http\Controllers\API;
 
-use App\User;
+use App\Exceptions\ValidationException;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Response;
 use App\Http\Requests\AuthControllerLoginRequest;
 use App\Http\Requests\AuthControllerRegisterRequest;
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Response;
 
+/**
+ * Class AuthController
+ * @package App\Http\Controllers\API
+ */
 class AuthController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api', ['except' => ['register', 'login']]);
-    }
-
+    /**
+     * @param AuthControllerRegisterRequest $request
+     * @return mixed
+     */
     protected function register(AuthControllerRegisterRequest $request)
     {
-        $data = $request->only(['name', 'email', 'password']);
         User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
-        return Response::ok($data = [], $message = "Registration completed successfully");
+
+        // Залогинить и вернуть токен
+
+        return Response::ok();
     }
 
+    /**
+     * @param AuthControllerLoginRequest $request
+     * @return mixed
+     * @throws ValidationException
+     */
     public function login(AuthControllerLoginRequest $request)
     {
         $credentials = $request->only(['email', 'password']);
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Incorrect email/password'], 401);
+
+        if (!$token = auth()->attempt($credentials)) {
+            throw new ValidationException(["email" => "auth.attempt.failed"]);
         }
-        return Response::ok($data = ["token"=>$token], $message = "You are logged in. Use your token to access the resource");
+
+        return Response::ok(["token" => $token]);
     }
 
+    /**
+     * @return mixed
+     */
     public function logout()
     {
         auth()->logout();
-        return Response::ok($data = [], $message = "Successfully logged out");
+
+        return Response::ok();
     }
 
+    /**
+     * @return mixed
+     */
     public function me()
     {
-        return response()->json(auth()->user());
+        return Response::ok(auth()->user());
     }
 }

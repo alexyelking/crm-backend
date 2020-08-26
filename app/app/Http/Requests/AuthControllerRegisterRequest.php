@@ -7,6 +7,16 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Response;
 
+
+/**
+ * Class AuthControllerRegisterRequest
+ * @package App\Http\Requests
+ *
+ * Получаем
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ */
 class AuthControllerRegisterRequest extends FormRequest
 {
     /**

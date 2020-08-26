@@ -2,11 +2,12 @@
 
 namespace App\Exceptions;
 
+use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\UnauthorizedException;
-use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
@@ -34,10 +35,10 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param \Throwable $exception
+     * @param Throwable $exception
      * @return void
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function report(Throwable $exception)
     {
@@ -47,17 +48,22 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Throwable $exception
+     * @param Request $request
+     * @param Throwable $exception
      * @return \Symfony\Component\HttpFoundation\Response
      *
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function render($request, Throwable $exception)
     {
+        // Отрендерить, если это кастомное наше
+        if (method_exists($exception, 'render')) {
+            return $exception->render($request);
+        }
+
         // Validation
-        if ($exception instanceof ValidationException) {
-            return Response::exception(1, 422, $exception, $exception->errors());
+        if ($exception instanceof \Illuminate\Validation\ValidationException) {
+            throw new ValidationException($exception->errors());
         }
 
         // HttpExceptions from laravel
