@@ -38,12 +38,14 @@ class AuthController extends Controller
 
     public function login(AuthControllerLoginRequest $request)
     {
+
         $credentials = $request->only(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Incorrect email/password'], 401);
         }
 
+//        $token = auth()->attempt($request->only('email', 'password'));
         return $this->respondWithToken($token);
     }
 

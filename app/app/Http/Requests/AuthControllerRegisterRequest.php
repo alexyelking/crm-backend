@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Response;
 
 class AuthControllerRegisterRequest extends FormRequest
 {
@@ -14,6 +17,10 @@ class AuthControllerRegisterRequest extends FormRequest
     public function authorize()
     {
         return true;
+    }
+
+    protected function failedValidation(Validator $validator) {
+        throw new HttpResponseException(Response::custom($status = 1, $code = 401, $data = [], $message = "The operation resulted in an error", $errors = $validator->errors()));
     }
 
     /**

@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Response;
 
 class AuthControllerLoginRequest extends FormRequest
 {
@@ -16,6 +19,11 @@ class AuthControllerLoginRequest extends FormRequest
         return true;
     }
 
+
+    protected function failedValidation(Validator $validator) {
+        throw new HttpResponseException(Response::custom($status = 1, $code = 401, $data = [], $message = "The operation resulted in an error", $errors = $validator->errors()));
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,8 +32,8 @@ class AuthControllerLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email', 'min:3', 'max:255'],
-            'password' => ['required', 'string', 'min:6', 'max:255'],
+            'email' => ['required', 'string', 'email', 'min:3', 'max:50'],
+            'password' => ['required', 'string', 'min:6', 'max:50'],
         ];
     }
 }
