@@ -28,9 +28,10 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Залогинить и вернуть токен
+        $credentials = $request->only(['email', 'password']);
+        $token = auth()->attempt($credentials);
 
-        return Response::ok();
+        return Response::ok(["token" => $token]);
     }
 
     /**

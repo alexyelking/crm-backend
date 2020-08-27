@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ClientsControllerCreateRequest;
+use App\Http\Requests\ClientsControllerUpdateRequest;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
@@ -14,10 +15,10 @@ class ClientsController extends Controller
     /**
      * ClientsController constructor.
      */
-//    public function __construct()
-//    {
-//        $this->middleware('auth:api');
-//    }
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -45,11 +46,11 @@ class ClientsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param ClientsControllerUpdateRequest $request
      * @param Client $client
      * @return mixed
      */
-    public function update(Request $request, Client $client)
+    public function update(ClientsControllerUpdateRequest $request, Client $client)
     {
         $client->update($request->all());
         return Response::ok([$client]);
