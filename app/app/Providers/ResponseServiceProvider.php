@@ -28,14 +28,14 @@ class ResponseServiceProvider extends ServiceProvider
             return Response::custom(0, 200, $data, $message);
         });
 
-        Response::macro("exception", function ($status, $code, \Exception $e, $errors = []) {
+        Response::macro("exception", function ($status, $code,\Throwable $e, $errors = []) {
             // Для прода
             $err = empty($errors) ? [] : $errors;
             $data = [];
 
             // Для локали и дева
             if(app()->environment(["local","development"])){
-                $err = empty($errors) ? $e->getTrace() : $errors;
+                $err = empty($errors) ? $e->getTraceAsString() : $errors;
                 $data = ["classname" => class_basename($e)];
             }
 
