@@ -39,6 +39,7 @@ class AuthController extends Controller
      * @return mixed
      * @throws ValidationException
      */
+    // 123
     public function login(AuthControllerLoginRequest $request)
     {
         $credentials = $request->only(['email', 'password']);
