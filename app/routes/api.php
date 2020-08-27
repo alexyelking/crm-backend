@@ -14,12 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
 Route::post('/auth/register', 'API\AuthController@register');
 Route::post('/auth/login', 'API\AuthController@login');
 Route::post('/auth/logout', 'API\AuthController@logout')->middleware(["auth:api"]);
 
 Route::get('/me', 'API\AuthController@me');
+
+
+Route::post('/clients/create', 'API\ClientsController@create');                     // Создать клиента
+Route::get('/clients/read/{client}', 'API\ClientsController@read');                 // Прочитать инфу о клиенте
+Route::put('/clients/update/{client}', 'API\ClientsController@update');             // Редактировать клиента
+Route::delete('/clients/delete/{client}', 'API\ClientsController@delete');          // Удалить клиента
+
+Route::get('/clients', 'API\ClientsController@showAll');                            // Вызвать JSON со всеми клиентами
