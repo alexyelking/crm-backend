@@ -32,7 +32,7 @@ class AuthController extends Controller
         $credentials = $request->only(['email', 'password']);
         $token = auth()->attempt($credentials);
 
-        return Response::ok(["token" => $token, "user" => $request->only(['name', 'email'])]);
+        return Response::ok(["token" => $token, "user" => auth()->user()->only(['name', 'email'])]);
     }
 
     /**
@@ -47,8 +47,7 @@ class AuthController extends Controller
             throw new ValidationException(["email" => "auth.attempt.failed"]);
         }
 
-        $user = DB::table('users')->where('email', $request->email)->first();
-        return Response::ok(["token" => $token, "user" => ["name" => $user->name,"email"=> $request->email]]);
+        return Response::ok(["token" => $token, "user" => auth()->user()->only(['name', 'email'])]);
     }
 
     /**
