@@ -17,13 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::post('/auth/register', 'API\AuthController@register');
 Route::post('/auth/login', 'API\AuthController@login');
 Route::post('/auth/logout', 'API\AuthController@logout')->middleware(["auth:api"]);
+Route::get('/auth/me', 'API\AuthController@me')->middleware(["auth:api"]);;
 
-Route::get('/me', 'API\AuthController@me');
 
-
-Route::post('/clients/create', 'API\ClientsController@create');                     // Создать клиента
-Route::get('/clients/read/{client}', 'API\ClientsController@read');                 // Прочитать инфу о клиенте
-Route::put('/clients/update/{client}', 'API\ClientsController@update');             // Редактировать клиента
-Route::delete('/clients/delete/{client}', 'API\ClientsController@delete');          // Удалить клиента
-
-Route::get('/clients', 'API\ClientsController@showAll');                            // Вызвать JSON со всеми клиентами
+Route::get('/clients', 'API\ClientsController@index')->middleware(["auth:api"]);
+Route::get('/clients/{id}', 'API\ClientsController@show')->middleware(["auth:api"]);
+Route::post('/clients/{id}', 'API\ClientsController@update')->middleware(["auth:api"]);
+Route::delete('/clients/{id}', 'API\ClientsController@destroy')->middleware(["auth:api"]);
+Route::post('/clients', 'API\ClientsController@create')->middleware(["auth:api"]);
