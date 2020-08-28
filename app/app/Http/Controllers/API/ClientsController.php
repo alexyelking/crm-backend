@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Clients\CreateRequest;
 use App\Http\Requests\Clients\UpdateRequest;
 use App\Http\Resources\ClientResource;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 
 class ClientsController extends Controller

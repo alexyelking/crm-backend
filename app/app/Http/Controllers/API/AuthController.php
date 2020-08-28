@@ -39,11 +39,9 @@ class AuthController extends Controller
      * @return mixed
      * @throws ValidationException
      */
-    // 123
     public function login(LoginRequest $request)
     {
         $credentials = $request->only(['email', 'password']);
-
         if (!$token = auth()->attempt($credentials)) {
             throw new ValidationException(["email" => "auth.attempt.failed"]);
         }
