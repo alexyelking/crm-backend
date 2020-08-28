@@ -14,6 +14,7 @@ use Illuminate\Foundation\Http\FormRequest;
  */
 class LoginRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -32,8 +33,24 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email', 'min:3', 'max:50'],
+            'email' => ['required', 'string', 'min:3', 'max:50', 'email'],
             'password' => ['required', 'string', 'min:6', 'max:50'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'email.required' => 'validation.auth.email.required',
+            'email.string' => 'validation.auth.email.string',
+            'email.min' => 'validation.auth.email.min.length',
+            'email.max' => 'validation.auth.email.max.length',
+            'email.email' => 'validation.auth.email.email',
+
+            'password.required' => 'validation.auth.password.required',
+            'password.string' => 'validation.auth.password.string',
+            'password.min' => 'validation.auth.password.min.length',
+            'password.max' => 'validation.auth.password.max.length',
         ];
     }
 }

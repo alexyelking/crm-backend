@@ -38,4 +38,27 @@ class CreateRequest extends FormRequest
             'phone' => ['required', 'string', 'min:8', 'max:15', 'unique:clients'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'validation.clients.name.required',
+            'name.string' => 'validation.clients.name.string',
+            'name.min' => 'validation.clients.name.min.length',
+            'name.max' => 'validation.clients.name.max.length',
+
+            'email.required' => 'validation.clients.email.required',
+            'email.string' => 'validation.clients.email.string',
+            'email.min' => 'validation.clients.email.min.length',
+            'email.max' => 'validation.clients.email.max.length',
+            'email.email' => 'validation.clients.email.email',
+            'email.unique' => 'validation.clients.email.unique',
+
+            'phone.required' => 'validation.clients.phone.required',
+            'phone.string' => 'validation.clients.phone.string',
+            'phone.min' => 'validation.clients.phone.min.length',
+            'phone.max' => 'validation.clients.phone.max.length',
+            'phone.unique' => 'validation.clients.phone.unique',
+        ];
+    }
 }
