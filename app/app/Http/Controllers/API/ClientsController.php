@@ -12,7 +12,7 @@ class ClientsController extends Controller
 {
     public function index()
     {
-        $clients = Client::all();
+        $clients = Client::query()->limit(500);
         return Response::ok([$clients]);
     }
 
