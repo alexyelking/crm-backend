@@ -4,8 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Exceptions\ValidationException;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AuthControllerLoginRequest;
-use App\Http\Requests\AuthControllerRegisterRequest;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\RegisterRequest;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Response;
 class AuthController extends Controller
 {
     /**
-     * @param AuthControllerRegisterRequest $request
+     * @param RegisterRequest $request
      * @return mixed
      */
-    protected function register(AuthControllerRegisterRequest $request)
+    protected function register(RegisterRequest $request)
     {
         User::create([
             'name' => $request->name,
@@ -35,12 +35,12 @@ class AuthController extends Controller
     }
 
     /**
-     * @param AuthControllerLoginRequest $request
+     * @param LoginRequest $request
      * @return mixed
      * @throws ValidationException
      */
     // 123
-    public function login(AuthControllerLoginRequest $request)
+    public function login(LoginRequest $request)
     {
         $credentials = $request->only(['email', 'password']);
 

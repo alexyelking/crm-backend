@@ -1,10 +1,19 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Clients;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientsControllerCreateRequest extends FormRequest
+/**
+ * Class CreateRequest
+ * @package App\Http\Requests\Clients
+ *
+ * Получаем
+ * @property string $name
+ * @property string $email
+ * @property string $phone
+ */
+class CreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -4,11 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Client;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ClientsControllerCreateRequest;
-use App\Http\Requests\ClientsControllerUpdateRequest;
+use App\Http\Requests\Clients\CreateRequest;
+use App\Http\Requests\Clients\UpdateRequest;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Return_;
 
 class ClientsController extends Controller
 {
@@ -23,9 +21,9 @@ class ClientsController extends Controller
         return Response::ok([$client]);
     }
 
-    public function update(ClientsControllerUpdateRequest $request, Client $client)
+    public function update(UpdateRequest $request, Client $client)
     {
-        $client->update($request->all());
+        $client->update($request->only(['name', 'email', 'phone']));
         return Response::ok([$client]);
     }
 
@@ -35,9 +33,9 @@ class ClientsController extends Controller
         return Response::ok();
     }
 
-    public function create(ClientsControllerCreateRequest $request)
+    public function create(CreateRequest $request)
     {
-        $client = Client::create($request->all());
+        $client = Client::create($request->only(['name', 'email', 'phone']));
         return Response::ok([$client]);
     }
 }

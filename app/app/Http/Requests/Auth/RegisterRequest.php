@@ -1,23 +1,19 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Support\Facades\Response;
-
 
 /**
- * Class AuthControllerRegisterRequest
- * @package App\Http\Requests
+ * Class RegisterRequest
+ * @package App\Http\Requests\Auth
  *
  * Получаем
  * @property string $name
  * @property string $email
  * @property string $password
  */
-class AuthControllerRegisterRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
