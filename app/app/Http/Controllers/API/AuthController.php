@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 
@@ -31,7 +32,7 @@ class AuthController extends Controller
         $credentials = $request->only(['email', 'password']);
         $token = auth()->attempt($credentials);
 
-        return Response::ok(["token" => $token]);
+        return Response::ok(["token" => $token, "user" => $request->only(['name', 'email'])]);
     }
 
     /**
@@ -46,7 +47,8 @@ class AuthController extends Controller
             throw new ValidationException(["email" => "auth.attempt.failed"]);
         }
 
-        return Response::ok(["token" => $token]);
+        $user = DB::table('users')->where('email', $request->email)->first();
+        return Response::ok(["token" => $token, "user" => ["name" => $user->name,"email"=> $request->email]]);
     }
 
     /**
