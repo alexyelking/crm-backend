@@ -6,19 +6,21 @@ use App\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Clients\CreateRequest;
 use App\Http\Requests\Clients\UpdateRequest;
+use App\Http\Resources\ClientResource;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 
 class ClientsController extends Controller
 {
     public function index()
     {
-        $clients = Client::query()->limit(500);
-        return Response::ok([$clients]);
+        $clients = Client::query()->limit(100)->get();
+        return Response::ok(ClientResource::collection($clients));
     }
 
     public function show(Client $client)
     {
-        return Response::ok([$client]);
+        return Response::ok(new ClientResource($client));
     }
 
     public function update(UpdateRequest $request, Client $client)
