@@ -14,21 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(["prefix"=>"auth"], function (){
-    Route::post('/register', 'API\AuthController@register');
-    Route::post('/login', 'API\AuthController@login');
-
+Route::group(["prefix"=>"auth", "namespace"=>"API"], function (){
+    Route::post('/register', 'AuthController@register')->name('auth.register');
+    Route::post('/login', 'AuthController@login')->name('auth.login');
     Route::group(["middleware"=>"auth:api"], function (){
-        Route::post('/logout', 'API\AuthController@logout');
-        Route::get('/me', 'API\AuthController@me');
+        Route::post('/logout', 'AuthController@logout')->name('auth.logout');
+        Route::get('/me', 'AuthController@me')->name('auth.me');
     });
 });
 
 
-Route::group(["prefix"=>"clients", "middleware"=>"auth:api"], function (){
-    Route::get('/', 'API\ClientsController@index');
-    Route::get('/{client}', 'API\ClientsController@show');
-    Route::post('/{client}', 'API\ClientsController@update');
-    Route::delete('/{client}', 'API\ClientsController@destroy');
-    Route::post('/', 'API\ClientsController@create');
+Route::group(["prefix"=>"clients", "middleware"=>"auth:api", "namespace"=>"API"], function (){
+    Route::get('/', 'ClientsController@index')->name('clients.index');
+    Route::get('/{client}', 'ClientsController@show')->name('clients.show');
+    Route::post('/{client}', 'ClientsController@update')->name('clients.update');
+    Route::delete('/{client}', 'ClientsController@destroy')->name('clients.destroy');
+    Route::post('/', 'ClientsController@create')->name('clients.create');
 });
