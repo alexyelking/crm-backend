@@ -12,6 +12,12 @@
 
 1. Скопируй ```.env.example``` в ```.env```
 2. Зайди в web (```docker-compose exec web bash```)
-3. Cоздаq ключ (```php artisan key:generate```)
-4. Сделай миграции (```php artisan migrate```)
-5. По желанию можно запустить сидеры (```php artisan db:seed```)
+3. Надо создать ключ (```php artisan key:generate```)
+4. Надо создать jwt ключ (```php artisan jwt:secret```)
+5. Осталось сделать миграции (```php artisan migrate```)
+6. По желанию можно запустить сидеры (```php artisan db:seed```)
+
+##Всё! Зайди на 0.0.0.0:**PORT**/public ```(Апач порт 8081 по умолчанию)```
+
+
+
