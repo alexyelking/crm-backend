@@ -25,6 +25,9 @@ Route::group(["prefix"=>"auth", "namespace"=>"API"], function (){
     });
 });
 
+Route::group(["prefix"=>"dashboard", "middleware"=>"auth:api", "namespace"=>"API"], function (){
+    Route::get('/', 'DashboardController@index');
+});
 
 Route::group(["prefix"=>"clients", "middleware"=>"auth:api", "namespace"=>"API"], function (){
     Route::get('/', 'ClientsController@index')->name('clients.index');
