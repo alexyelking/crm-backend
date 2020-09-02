@@ -6,6 +6,7 @@ use Closure;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Validation\UnauthorizedException;
 
 class RedirectIfAuthenticated
 {
@@ -17,12 +18,11 @@ class RedirectIfAuthenticated
      * @param  string|null $guard
      * @return mixed
      * @throws \Exception
+     * @throws \Throwable
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return Response::custom(4, 401, ["classname" => "AuthenticationException"], "Unauthenticated");
-        }
+        throw_if(Auth::guard($guard)->check(), new UnauthorizedException());
 
         return $next($request);
     }
