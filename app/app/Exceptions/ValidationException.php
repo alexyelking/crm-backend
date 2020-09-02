@@ -27,6 +27,6 @@ class ValidationException extends Exception
      */
     public function render($request)
     {
-        return Response::custom(1, 422, [], "validation.incorrect.data", $this->bag);
+        return Response::custom(1, 422, [], "", $this->bag);
     }
 }
