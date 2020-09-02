@@ -13,3 +13,6 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('/auth/register', 'AuthController@register')->name('auth.register');
+Route::post('/auth/login', 'AuthController@login')->name('auth.login');
