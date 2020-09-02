@@ -37,20 +37,4 @@ class LoginRequest extends FormRequest
             'password' => ['required', 'string', 'min:6', 'max:50'],
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'email.required' => 'validation.auth.email.required',
-            'email.string' => 'validation.auth.email.string',
-            'email.min' => 'validation.auth.email.min.length',
-            'email.max' => 'validation.auth.email.max.length',
-            'email.email' => 'validation.auth.email.email',
-
-            'password.required' => 'validation.auth.password.required',
-            'password.string' => 'validation.auth.password.string',
-            'password.min' => 'validation.auth.password.min.length',
-            'password.max' => 'validation.auth.password.max.length',
-        ];
-    }
 }
