@@ -1,5 +1,7 @@
 <?php
 
+namespace database\seeds\lib\fake;
+
 use App\User;
 use Illuminate\Database\Seeder;
 

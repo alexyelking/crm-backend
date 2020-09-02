@@ -1,10 +1,10 @@
 <?php
 
-use database\seeds\lib\safe\ClientsTableSeeder;
-use database\seeds\lib\safe\UserTableSeeder;
+use database\seeds\lib\fake\ClientsTableSeeder;
+use database\seeds\lib\fake\UserTableSeeder;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class DatabaseFakeSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserTableSeeder::class);
         $this->call(ClientsTableSeeder::class);
+        $this->call(UserTableSeeder::class);
     }
 }

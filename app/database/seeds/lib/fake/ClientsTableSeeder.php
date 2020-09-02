@@ -1,5 +1,7 @@
 <?php
 
+namespace database\seeds\lib\fake;
+
 use App\Client;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +15,7 @@ class ClientsTableSeeder extends Seeder
     public function run()
     {
         Client::truncate();
+
         factory(Client::class, 25)->create();
     }
 }
