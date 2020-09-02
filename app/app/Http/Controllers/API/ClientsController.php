@@ -14,7 +14,7 @@ class ClientsController extends Controller
     public function index()
     {
         $clients = Client::query()->limit(100)->get();
-        return Response::ok(ClientResource::collection($clients));
+        return Response::ok(["data" => ClientResource::collection($clients)]);
     }
 
     public function show(Client $client)
