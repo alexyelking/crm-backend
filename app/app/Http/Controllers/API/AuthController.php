@@ -43,7 +43,7 @@ class AuthController extends Controller
     {
         $credentials = $request->only(['email', 'password']);
         if (!$token = auth()->attempt($credentials)) {
-            throw new ValidationException(["email" => "auth.attempt.failed"]);
+            throw new ValidationException(__('auth.failed'));
         }
 
         return Response::ok(["token" => $token, "user" => auth()->user()->only(['name', 'email'])]);
