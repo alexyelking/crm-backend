@@ -13,7 +13,6 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property string $email
  * @property string $phone
  * @property string $client
- * @property string $id
  */
 class UpdateRequest extends FormRequest
 {
@@ -34,13 +33,6 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
-        /*
-        return [
-            'name' => ['string', 'min:3', 'max:50'],
-            'email' => ['string', 'min:3', 'max:50', 'email', 'unique:clients'],
-            'phone' => ['string', 'min:8', 'max:15', 'unique:clients'],
-        ];
-        */
         return [
             'name' => ['string', 'min:3', 'max:50'],
             'email' => ['string', 'min:3', 'max:50', 'email', 'unique:clients,email,'.$this->client->id],
