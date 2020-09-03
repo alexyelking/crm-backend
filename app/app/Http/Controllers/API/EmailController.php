@@ -4,14 +4,14 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\FeedbackMail;
+use App\Mail\Email;
 use Illuminate\Support\Facades\Response;
 
-class MailController extends Controller
+class EmailController extends Controller
 {
     public function create() {
         $toEmail = "newmanforlife@list.ru";
-        Mail::to($toEmail)->send(new FeedbackMail());
+        Mail::to($toEmail)->send(new Email());
         return Response::ok();
     }
 }
