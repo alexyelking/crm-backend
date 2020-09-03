@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Clients;
 
+use App\Client;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -12,7 +13,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property string $name
  * @property string $email
  * @property string $phone
- * @property string $client
+ * @property Client $client
  */
 class UpdateRequest extends FormRequest
 {

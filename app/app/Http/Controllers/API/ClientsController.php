@@ -19,13 +19,13 @@ class ClientsController extends Controller
 
     public function show(Client $client)
     {
-        return Response::ok(new ClientResource($client));
+        return Response::ok(["client"=>new ClientResource($client)]);
     }
 
     public function update(UpdateRequest $request, Client $client)
     {
         $client->update($request->only(['name', 'email', 'phone']));
-        return Response::ok(["client"=>$client]);
+        return Response::ok(["client"=>new ClientResource($client)]);
     }
 
     public function destroy(Client $client)
@@ -37,6 +37,6 @@ class ClientsController extends Controller
     public function create(CreateRequest $request)
     {
         $client = Client::create($request->only(['name', 'email', 'phone']));
-        return Response::ok(["client"=>$client]);
+        return Response::ok(["client"=>new ClientResource($client)]);
     }
 }

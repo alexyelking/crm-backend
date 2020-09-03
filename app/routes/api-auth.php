@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('/auth/logout', 'AuthController@logout')->name('auth.logout');
 Route::get('/auth/me', 'AuthController@me')->name('auth.me');
 
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
+
+Route::get('/email', 'MailController@create')->name('email.create');
 
 Route::group(["prefix"=>"clients"], function (){
     Route::get('/', 'ClientsController@index')->name('clients.index');
