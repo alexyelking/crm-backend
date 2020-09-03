@@ -4,6 +4,7 @@ namespace database\seeds\lib\safe;
 
 use App\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserTableSeeder extends Seeder
 {
@@ -14,8 +15,10 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        if (!User::where('email', '=','public@example.user')->exists()) {
-            factory(User::class)->create(['name'=>"exampleUser",'email'=>"public@example.user"]);
-        }
+        // Общий пользователь
+        User::updateOrCreate(
+            ['email' => "public@user.example"],
+            ['name' => "Example User", 'password' => Hash::make("123123")]
+        );
     }
 }

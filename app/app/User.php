@@ -12,6 +12,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @property string email
  * @property \DateTime created_at
  * @property \DateTime updated_at
+ * @method static updateOrCreate(array $array, array $array1)
  */
 
 class User extends Authenticatable implements JWTSubject

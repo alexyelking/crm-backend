@@ -15,13 +15,15 @@ class ClientsTableSeeder extends Seeder
     public function run()
     {
         // Алексей
-        if (!Client::where('email', '=','public@example.user')->exists()) {
-            factory(Client::class)->create(['name'=>"AlexeyKorol",'email'=>"dontremember@forvie.me"]);
-        }
+        Client::updateOrCreate(
+            ['email' => "kemiiep.omck@mail.ru", 'phone' => "89236989630"],
+            ['name' => "Alexey Korol"]
+        );
 
         // Александр
-        if (!Client::where('email', '=','newmanforlife@list.ru')->exists()) {
-            factory(Client::class)->create(['name'=>"AlexandrElkin",'email'=>"newmanforlife@lis.ru", 'phone'=>"89502177622"]);
-        }
+        Client::updateOrCreate(
+            ['email' => "newmanforlife@list.ru", 'phone' => "89502177622"],
+            ['name' => "Alexandr Elkin"]
+        );
     }
 }

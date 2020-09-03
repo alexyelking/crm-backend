@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string phone
  * @property \DateTime created_at
  * @property \DateTime updated_at
+ * @method static updateOrCreate(array $array, array $array1)
  */
 class Client extends Model
 {
