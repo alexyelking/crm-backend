@@ -25,7 +25,7 @@ class ClientsController extends Controller
     public function update(UpdateRequest $request, Client $client)
     {
         $client->update($request->only(['name', 'email', 'phone']));
-        return Response::ok([$client]);
+        return Response::ok(["client"=>$client]);
     }
 
     public function destroy(Client $client)
@@ -37,6 +37,6 @@ class ClientsController extends Controller
     public function create(CreateRequest $request)
     {
         $client = Client::create($request->only(['name', 'email', 'phone']));
-        return Response::ok([$client]);
+        return Response::ok(["client"=>$client]);
     }
 }
