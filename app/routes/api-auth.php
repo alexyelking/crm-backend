@@ -20,6 +20,7 @@ Route::get('/auth/me', 'AuthController@me')->name('auth.me');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
 Route::get('/email', 'MailController@create')->name('email.create');
+Route::get('/mail', 'EmailController@show')->name('email.show');
 
 Route::group(["prefix"=>"clients"], function (){
     Route::get('/', 'ClientsController@index')->name('clients.index');

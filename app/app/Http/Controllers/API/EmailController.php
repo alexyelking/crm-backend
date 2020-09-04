@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\Email;
+use App\Http\Resources\EmailResource;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
 
 class EmailController extends Controller
@@ -22,8 +22,15 @@ class EmailController extends Controller
         */
 
 
+        /*
         $toEmail = "newmanforlife@list.ru";
         Mail::to($toEmail)->send(new Email());
         return Response::ok();
+        */
+    }
+
+    public function show(){
+        $emails = auth::user()->emails;
+        return Response::ok(["data" => EmailResource::collection($emails)]);
     }
 }
