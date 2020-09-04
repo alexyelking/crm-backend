@@ -39,10 +39,15 @@ class EmailController extends Controller
         // А потом отправляем его адресату
         Mail::to($request->to)->send(new FeedbackMail($request->body));
 
-        // Возвращаем пользователю Ок, и прикладываем получившийся экземпляр письма
+        // Возвращаем пользователю Ок, и прикладываем получившийся экземпляр письма, вдруг понадобится
         return Response::ok(["data" => new EmailResource($email)]);
     }
 
+    // Просмотр всех своих писем!
+
+    /**
+     * @return mixed
+     */
     public function index(){
         $emails = auth::user()->emails;
         return Response::ok(["data" => EmailResource::collection($emails)]);

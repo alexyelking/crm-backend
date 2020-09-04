@@ -5,7 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class FeedbackMail extends Mailable
 {
@@ -30,6 +29,8 @@ class FeedbackMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.template');
+        return $this->view('emails.template')
+            ->from(auth()->user()->email, auth()->user()->name)
+            ->subject("scout-portfolio.ru");
     }
 }

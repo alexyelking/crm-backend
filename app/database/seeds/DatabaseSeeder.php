@@ -19,6 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ClientsTableSeeder::class);
 
         // Дополнительные клиенты для показа
-        $this->call(ClientsAdditionalTableSeeder::class);
+        //$this->call(ClientsAdditionalTableSeeder::class);
     }
 }
