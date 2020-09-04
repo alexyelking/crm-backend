@@ -1,7 +1,7 @@
 <?php
 
-use database\seeds\lib\safe\ClientsTableSeeder;
-use database\seeds\lib\safe\UserTableSeeder;
+use database\seeds\lib\ClientsTableSeeder;
+use database\seeds\lib\UserTableSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

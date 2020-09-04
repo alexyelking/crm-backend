@@ -14,8 +14,14 @@ class CreateEmailsTable extends Migration
     public function up()
     {
         Schema::create('emails', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->unsignedBigInteger('from');
+            $table->string('to');
+            $table->string('body');
             $table->timestamps();
+
+            $table->foreign('from')->references('id')->on('users');
+
         });
     }
 
@@ -26,6 +32,10 @@ class CreateEmailsTable extends Migration
      */
     public function down()
     {
+        Schema::table('emails', function (Blueprint $table) {
+            $table->dropForeign(['from']);
+        });
         Schema::dropIfExists('emails');
+
     }
 }

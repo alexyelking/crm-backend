@@ -1,6 +1,6 @@
 <?php
 
-namespace database\seeds\lib\safe;
+namespace database\seeds\lib;
 
 use App\Client;
 use Illuminate\Database\Seeder;
@@ -25,5 +25,7 @@ class ClientsTableSeeder extends Seeder
             ['email' => "newmanforlife@list.ru", 'phone' => "89502177622"],
             ['name' => "Alexandr Elkin"]
         );
+
+        factory(Client::class, 10)->create();
     }
 }

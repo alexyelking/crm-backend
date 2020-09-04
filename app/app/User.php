@@ -55,4 +55,10 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function emails()
+    {
+        return $this->hasMany('App\Email');
+    }
+
 }
