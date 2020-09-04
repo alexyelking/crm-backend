@@ -24,23 +24,22 @@ class EmailController extends Controller
             //Если письму меньше часа
             if (!$email->created_at->lt(Carbon::now()->subMinutes(1))){
 
-                // Возвращаем код ошибки 5051
+                // Возвращаем секретный код ошибки 5051
                 return Response::ok(["data" => "5051"]);
             }
-
         }
 
-        // Если всё нормально, нашли письмо и оно пожилое, тогда берём и отправляем его
-        Mail::to($request->to)->send(new FeedbackMail($request->body));
-
-        // А потом сохраняем в базе
+        // Если всё нормально, нашли письмо и оно пожилое, тогда берём и сохраняем его в базе
         $email = Email::create([
             'user_id' => auth()->user()->id,
             'to' => $request->to,
             'body' => $request->body,
         ]);
 
-        // Возвращаем Ок, и прикладываем получившиеся письмо
+        // А потом отправляем его адресату
+        Mail::to($request->to)->send(new FeedbackMail($request->body));
+
+        // Возвращаем пользователю Ок, и прикладываем получившийся экземпляр письма
         return Response::ok(["data" => new EmailResource($email)]);
     }
 

@@ -16,20 +16,20 @@
                 </tr>
                 <tr>
                     <td class="content">
-                        <h2>Доброго времени суток.</h2>
+                        <h2>@lang('mail.welcome')</h2>
+                        <p><em>@lang('mail.messageforu')</em></p>
                         <p>{{ $body }}</p>
                         <table>
                             <tr>
                                 <td align="center">
                                     <p>
-                                        <a href="http://scout-portfolio.ru" class="button">На сайт!</a>
+                                        <a href="http://scout-portfolio.ru" class="button">@lang('mail.sitebtn')</a>
                                     </p>
                                 </td>
                             </tr>
                         </table>
-                        <p>Спасибо за просмотр демо версии нашего сайта.</p>
-                        <p>Для возврата на него воспользуйтесь <a href="http://scout-portfolio.ru">ссылкой</a>.</p>
-                        <p><em>– С уважением, команда scout</em></p>
+                        <p>@lang('mail.ty')</p>
+                        <p><em>@lang('mail.respectfully')</em></p>
                     </td>
                 </tr>
             </table>
@@ -40,7 +40,7 @@
             <table>
                 <tr>
                     <td class="content footer" align="center">
-                        <p>Обратная связь</p>
+                        <p>@lang('mail.feedback')</p>
                         <p><a href="mailto:">kemiiep.omck@mail.ru</a> | <a href="mailto:">newmanforlife@list.ru</a></p>
                     </td>
                 </tr>
