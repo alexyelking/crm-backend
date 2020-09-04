@@ -22,6 +22,11 @@ class CreateRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        $this->body = (string)$this->body;
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
