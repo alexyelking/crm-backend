@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Clients;
+namespace App\Http\Requests\Email;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class CreateRequest
- * @package App\Http\Requests\Clients
- *
- * Получаем
- * @property string $name
- * @property string $email
- * @property string $phone
+ * @property mixed body
+ * @property mixed to
+ * @property \DateTime created_at
+ * @property \DateTime updated_at
  */
 class CreateRequest extends FormRequest
 {
@@ -33,9 +30,8 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'min:3', 'max:50'],
-            'email' => ['required', 'string', 'min:3', 'max:50', 'email', 'unique:clients'],
-            'phone' => ['required', 'string', 'min:8', 'max:15', 'unique:clients'],
+            'body' => ['required', 'string'],
+            'to' => ['required', 'string', 'email'],
         ];
     }
 }

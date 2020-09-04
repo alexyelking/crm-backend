@@ -2,34 +2,33 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Email;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Email\CreateRequest;
 use App\Http\Resources\EmailResource;
+use App\Mail\FeedbackMail;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 
 class EmailController extends Controller
 {
-    public function create() {
+    public function create(CreateRequest $request) {
+        Mail::to($request->to)->send(new FeedbackMail($request->body));
 
-        /*
-        $data = array('name'=>"Virat Gandhi");
-        Mail::send(['text'=>'mail'], $data, function($message) {
-            $message->to('abc@gmail.com', 'Tutorials Point')->subject
-            ('Laravel Basic Testing Mail');
-            $message->from('xyz@gmail.com','Virat Gandhi');
-        });
-        echo "Basic Email Sent. Check your inbox.";
-        */
+        $email = Email::create([
+            'user_id' => auth()->user()->id,
+            'to' => $request->to,
+            'body' => $request->body,
+        ]);
 
-
-        /*
-        $toEmail = "newmanforlife@list.ru";
-        Mail::to($toEmail)->send(new Email());
-        return Response::ok();
-        */
+        return Response::ok(["data" => new EmailResource($email)]);
     }
 
-    public function show(){
+
+
+    public function index(){
         $emails = auth::user()->emails;
         return Response::ok(["data" => EmailResource::collection($emails)]);
     }

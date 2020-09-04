@@ -11,24 +11,25 @@
             <table>
                 <tr>
                     <td align="center" class="masthead">
-                        <h1>Вечер в хату...</h1>
+                        <h1><a href="http://scout-portfolio.ru">scout-portfolio.ru</a></h1>
                     </td>
                 </tr>
                 <tr>
                     <td class="content">
-                        <h2>Приветствую.</h2>
-                        <p></p>
+                        <h2>Доброго времени суток.</h2>
+                        <p>{{ $body }}</p>
                         <table>
                             <tr>
                                 <td align="center">
                                     <p>
-                                        <a href="#" class="button">Share the Awesomeness</a>
+                                        <a href="http://scout-portfolio.ru" class="button">На сайт!</a>
                                     </p>
                                 </td>
                             </tr>
                         </table>
-                        <p>By the way, if you're wondering where you can find more of this fine meaty filler, visit <a href="http://baconipsum.com">Bacon Ipsum</a>.</p>
-                        <p><em>– Mr. Pen</em></p>
+                        <p>Спасибо за просмотр демо версии нашего сайта.</p>
+                        <p>Для возврата на него воспользуйтесь <a href="http://scout-portfolio.ru">ссылкой</a>.</p>
+                        <p><em>– С уважением, команда scout</em></p>
                     </td>
                 </tr>
             </table>
@@ -39,8 +40,8 @@
             <table>
                 <tr>
                     <td class="content footer" align="center">
-                        <p>Sent by <a href="#">Company Name</a>, 1234 Yellow Brick Road, OZ, 99999</p>
-                        <p><a href="mailto:">hello@company.com</a> | <a href="#">Unsubscribe</a></p>
+                        <p>Обратная связь</p>
+                        <p><a href="mailto:">kemiiep.omck@mail.ru</a> | <a href="mailto:">newmanforlife@list.ru</a></p>
                     </td>
                 </tr>
             </table>
@@ -63,7 +64,7 @@
 
     body, .body-wrap { width: 100% !important; height: 100%; background: #f8f8f8; }
 
-    a { color: #4238bc; text-decoration: none; }
+    a { color: #ffffff; text-decoration: none; }
 
     a:hover { text-decoration: underline; }
 

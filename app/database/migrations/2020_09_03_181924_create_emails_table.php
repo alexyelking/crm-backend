@@ -17,7 +17,7 @@ class CreateEmailsTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
             $table->string('to');
-            $table->string('body');
+            $table->string('body')->nullable()->default(NULL);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

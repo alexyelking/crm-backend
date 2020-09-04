@@ -4,8 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Client;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Clients\CreateRequest;
-use App\Http\Requests\Clients\UpdateRequest;
+use App\Http\Requests\Client\CreateRequest;
+use App\Http\Requests\Client\UpdateRequest;
 use App\Http\Resources\ClientResource;
 use Illuminate\Support\Facades\Response;
 
