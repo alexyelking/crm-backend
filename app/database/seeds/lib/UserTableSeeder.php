@@ -21,13 +21,13 @@ class UserTableSeeder extends Seeder
             ['name' => "Public User", 'password' => Hash::make("123123")]
         );
 
-        // Общий пользователь
+        // Пользователь Александра Сергеевича
         User::updateOrCreate(
             ['email' => "123@123.123"],
             ['name' => "Alexandr Elkin User", 'password' => Hash::make("123123")]
         );
 
-        // Общий пользователь
+        // Пользователь Алексея Короля
         User::updateOrCreate(
             ['email' => "a@a.a"],
             ['name' => "Alexey Korol User", 'password' => Hash::make("123123")]
