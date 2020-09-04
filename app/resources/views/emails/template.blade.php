@@ -29,7 +29,10 @@
                             </tr>
                         </table>
                         <p>@lang('mail.ty')</p>
+
                         <p><em>@lang('mail.respectfully')</em></p>
+
+                        <p><img src="https://a.radikal.ru/a40/2009/e1/d11f28583e3e.png" alt="Лого"/></p>
                     </td>
                 </tr>
             </table>
