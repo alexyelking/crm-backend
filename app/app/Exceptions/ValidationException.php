@@ -2,8 +2,8 @@
 
 namespace App\Exceptions;
 
-use Exception;
 use Illuminate\Support\Facades\Response;
+use Exception;
 
 class ValidationException extends Exception
 {

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Client;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\CreateRequest;
 use App\Http\Requests\Client\UpdateRequest;
-use App\Http\Resources\ClientResource;
 use Illuminate\Support\Facades\Response;
+use App\Http\Resources\ClientResource;
+use App\Http\Controllers\Controller;
+use App\Client;
 
 class ClientsController extends Controller
 {

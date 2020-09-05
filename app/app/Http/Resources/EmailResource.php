@@ -15,10 +15,11 @@ class EmailResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "id"=>$this->resource->id,
-            "from"=>$this->resource->user_id,
-            "to"=>$this->resource->to,
-            "body"=>$this->resource->body,
+            "id" => $this->resource->id,
+            "from" => $this->resource->user_id,
+            "to"=> $this->resource->to,
+            "body"=> $this->resource->body,
+            "created_at"=> $this->resource->created_at,
         ];
     }
 }

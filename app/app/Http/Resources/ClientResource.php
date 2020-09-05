@@ -2,12 +2,10 @@
 
 namespace App\Http\Resources;
 
-use App\Client;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ClientResource extends JsonResource
 {
-    /** @var Client */
     public $resource;
     /**
      * Transform the resource into an array.
@@ -18,10 +16,10 @@ class ClientResource extends JsonResource
     public function toArray($request)
     {
         return [
-            "id"=>$this->resource->id,
-            "name"=>$this->resource->name,
-            "email"=>$this->resource->email,
-            "phone"=>$this->resource->phone,
+            "id" => $this->resource->id,
+            "name" => $this->resource->name,
+            "email" => $this->resource->email,
+            "phone" => $this->resource->phone,
         ];
     }
 }

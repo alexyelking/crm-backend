@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Exceptions\ValidationException;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
-use App\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Exceptions\ValidationException;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
+use App\User;
 
 /**
  * Class AuthController

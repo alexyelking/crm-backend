@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Email;
 
+use App\Exceptions\AlreadyHaveEmailTodayException;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 /**
  * @property mixed body
@@ -24,7 +27,7 @@ class CreateRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        $this->body = (string)$this->body;
+        $this->body = htmlentities($this->body);
     }
 
     /**
@@ -38,5 +41,18 @@ class CreateRequest extends FormRequest
             'body' => ['required', 'string'],
             'to' => ['required', 'string', 'email'],
         ];
+    }
+
+    /**
+     * @throws AlreadyHaveEmailTodayException
+     */
+    public  function passedValidation()
+    {
+        $email = auth::user()->emails->last();
+        if($email != NULL){
+            if (!$email->created_at->lt(Carbon::now()->subMinutes(1))){
+                throw new AlreadyHaveEmailTodayException();
+            }
+        }
     }
 }
