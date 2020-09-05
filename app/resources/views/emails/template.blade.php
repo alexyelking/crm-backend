@@ -47,7 +47,7 @@
                         </p>
 
                         <p>
-                            <img src="https://a.radikal.ru/a40/2009/e1/d11f28583e3e.png" alt="Лого"/>
+                            <img src="https://c.radikal.ru/c03/2009/61/dac514df9609.png" alt="Лого"/>
                         </p>
                     </td>
                 </tr>
