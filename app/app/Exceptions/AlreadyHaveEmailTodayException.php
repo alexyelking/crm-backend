@@ -14,6 +14,6 @@ class AlreadyHaveEmailTodayException extends Exception
      */
     public function render()
     {
-        return Response::custom(7, 403, $this);
+        return Response::exception(7, 403, $this);
     }
 }

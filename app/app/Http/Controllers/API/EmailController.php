@@ -22,7 +22,7 @@ class EmailController extends Controller
 
         Mail::to($request->to)->send(new FeedbackMail($request->body, auth::user(), $request->header('Locale')));
 
-        return Response::ok(["data" => new EmailResource($email)]);
+        return Response::ok(["email" => new EmailResource($email)]);
     }
 
     public function index()
