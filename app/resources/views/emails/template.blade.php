@@ -17,40 +17,66 @@
                 <tr>
                     <td class="content">
                         <h2>@lang('mail.welcome')</h2>
-                        <p><em>@lang('mail.messageforu')</em></p>
-                        <p>{{ $body }}</p>
+                        <p>
+                            <b>@lang('mail.messageforu')</b>
+                        </p>
+                        <p>
+                            {{ $body }}
+                        </p>
+                        <br>
+                        <br>
                         <table>
                             <tr>
                                 <td align="center">
                                     <p>
-                                        <a href="http://scout-portfolio.ru" class="button">@lang('mail.sitebtn')</a>
+                                        <a href="http://scout-portfolio.ru" class="button">@lang('mail.sitebtn')
+                                        </a>
                                     </p>
                                 </td>
                             </tr>
                         </table>
-                        <p>@lang('mail.ty')</p>
+                        <br>
+                        <hr>
 
-                        <p><em>@lang('mail.respectfully')</em></p>
+                        <p>
+                            <em>@lang('mail.ty')</em>
+                        </p>
 
-                        <p><img src="https://a.radikal.ru/a40/2009/e1/d11f28583e3e.png" alt="Лого"/></p>
+                        <p>
+                            <em>@lang('mail.respectfully')</em>
+                        </p>
+
+                        <p>
+                            <img src="https://a.radikal.ru/a40/2009/e1/d11f28583e3e.png" alt="Лого"/>
+                        </p>
                     </td>
                 </tr>
             </table>
         </td>
     </tr>
+
     <tr>
         <td class="container">
             <table>
                 <tr>
                     <td class="content footer" align="center">
                         <p>@lang('mail.feedback')</p>
-                        <p><a href="mailto:">kemiiep.omck@mail.ru</a> | <a href="mailto:">newmanforlife@list.ru</a></p>
+                        <p>
+                            <a href="mailto:">
+                                kemiiep.omck@mail.ru
+                            </a>
+                            |
+                            <a href="mailto:">
+                                newmanforlife@list.ru
+                            </a>
+                        </p>
                     </td>
                 </tr>
             </table>
         </td>
     </tr>
 </table>
+
 </body>
 </html>
 
@@ -76,7 +102,7 @@
 
     .text-left { text-align: left; }
 
-    .button { display: inline-block; color: white; background: #495cbc; border: solid #495cbc; border-width: 10px 20px 8px; font-weight: bold; border-radius: 4px; }
+    .button { display: inline-block; color: white; background: #36394c; border: solid #2f374a; border-width: 10px 20px 10px; font-weight: bold; border-radius: 4px; }
 
     .button:hover { text-decoration: none; }
 
@@ -92,13 +118,13 @@
 
     h5 { font-size: 16px; }
 
-    p, ul, ol { font-size: 16px; font-weight: normal; margin-bottom: 20px; }
+    p, ul, ol { font-size: 16px; font-weight: normal; margin-top: 8px; }
 
     .container { display: block !important; clear: both !important; margin: 0 auto !important; max-width: 580px !important; }
 
     .container table { width: 100% !important; border-collapse: collapse; }
 
-    .container .masthead { padding: 80px 0; background: #495cbc; color: white; }
+    .container .masthead { padding: 80px 0; background: #2f374a; color: white; }
 
     .container .masthead h1 { margin: 0 auto !important; max-width: 90%; text-transform: uppercase; }
 
@@ -113,3 +139,21 @@
     .container .content.footer a:hover { text-decoration: underline; }
 
 </style>
+
+
+<!--
+Палитра
+$success: #02a499;
+$danger: #ec4561;
+$info: #38a4f8;
+$warning: #f8b425;
+
+
+$darkest: #222736;
+$dark: #2a3142;
+$light: #2f374a;
+$lightest: #36394c;
+
+$white: #fff;
+$black: #000;
+-->
