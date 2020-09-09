@@ -19,7 +19,7 @@ class ClientMetaResource extends JsonResource
             "rows" => [
                 "from"=>$this->resource->firstItem(),
                 "to"=>$this->resource->lastItem(),
-                "total"=>"",
+                "total"=>$this->resource->total(),
                 ],
             "navigation" => [
                 "page"=>$this->resource->currentPage(),

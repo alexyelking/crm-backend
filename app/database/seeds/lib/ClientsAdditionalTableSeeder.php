@@ -14,6 +14,6 @@ class ClientsAdditionalTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Client::class, (int)$amount = env('FAKE_CLIENTS'))->create();
+        factory(Client::class, (int)env('FAKE_CLIENTS'))->create();
     }
 }
