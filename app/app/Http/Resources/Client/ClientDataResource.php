@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Client;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Carbon\Carbon;
 
-class EmailResource extends JsonResource
+class ClientDataResource extends JsonResource
 {
     public $resource;
     /**
@@ -18,9 +18,9 @@ class EmailResource extends JsonResource
     {
         return [
             "id" => $this->resource->id,
-            "from" => $this->resource->user_id,
-            "to"=> $this->resource->to,
-            "body"=> $this->resource->body,
+            "name" => $this->resource->name,
+            "email" => $this->resource->email,
+            "phone" => $this->resource->phone,
             "created_at"=> Carbon::createFromFormat('Y-m-d H:i:s', $this->resource->created_at)->format('d-m-Y H:i:s'),
         ];
     }

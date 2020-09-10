@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Email;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ClientMetaResource extends JsonResource
+class EmailMetaResource extends JsonResource
 {
-    public $resource;
     /**
      * Transform the resource into an array.
      *
@@ -20,12 +19,12 @@ class ClientMetaResource extends JsonResource
                 "from"=>$this->resource->firstItem(),
                 "to"=>$this->resource->lastItem(),
                 "total"=>$this->resource->total(),
-                ],
+            ],
             "navigation" => [
                 "page"=>$this->resource->currentPage(),
                 "page_last"=>$this->resource->lastPage(),
                 "limit"=>$this->resource->perPage(),
-                ],
-            ];
+            ],
+        ];
     }
 }

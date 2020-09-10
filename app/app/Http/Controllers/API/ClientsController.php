@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Resources\Client\ClientDataResource;
+use App\Http\Resources\Client\ClientMetaResource;
 use App\Http\Requests\Client\CreateRequest;
 use App\Http\Requests\Client\UpdateRequest;
-use App\Http\Resources\ClientMetaResource;
-use App\Http\Resources\ClientDataResource;
 use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
