@@ -3,9 +3,11 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Carbon\Carbon;
 
 class EmailResource extends JsonResource
 {
+    public $resource;
     /**
      * Transform the resource into an array.
      *
@@ -19,7 +21,7 @@ class EmailResource extends JsonResource
             "from" => $this->resource->user_id,
             "to"=> $this->resource->to,
             "body"=> $this->resource->body,
-            "created_at"=> $this->resource->created_at,
+            "created_at"=> Carbon::createFromFormat('Y-m-d H:i:s', $this->resource->created_at)->format('d-m-Y H:i:s'),
         ];
     }
 }

@@ -2,9 +2,9 @@
 
 namespace database\seeds\lib;
 
-use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use App\User;
 
 class UserTableSeeder extends Seeder
 {

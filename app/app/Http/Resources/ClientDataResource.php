@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Carbon\Carbon;
 
 class ClientDataResource extends JsonResource
 {
@@ -20,6 +21,7 @@ class ClientDataResource extends JsonResource
             "name" => $this->resource->name,
             "email" => $this->resource->email,
             "phone" => $this->resource->phone,
+            "created_at"=> Carbon::createFromFormat('Y-m-d H:i:s', $this->resource->created_at)->format('d-m-Y H:i:s'),
         ];
     }
 }

@@ -2,8 +2,8 @@
 
 namespace database\seeds\lib;
 
-use App\Client;
 use Illuminate\Database\Seeder;
+use App\Client;
 
 class ClientsTableSeeder extends Seeder
 {
