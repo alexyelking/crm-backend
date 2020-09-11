@@ -19,13 +19,16 @@ Route::get('/auth/me', 'AuthController@me')->name('auth.me');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
-Route::post('/email', 'EmailController@create')->name('email.create');
-Route::get('/email', 'EmailController@index')->name('email.index');
+Route::group(["prefix"=>"emails"], function () {
+    Route::get('/', 'EmailController@index')->name('emails.index');
+    Route::get('/{email}', 'EmailController@show')->name('emails.show');
+    Route::post('/', 'EmailController@create')->name('emails.create');
+});
 
 Route::group(["prefix"=>"clients"], function (){
-    Route::get('/', 'ClientsController@index')->name('clients.index');
-    Route::get('/{client}', 'ClientsController@show')->name('clients.show');
-    Route::post('/{client}', 'ClientsController@update')->name('clients.update');
-    Route::delete('/{client}', 'ClientsController@destroy')->name('clients.destroy');
-    Route::post('/', 'ClientsController@create')->name('clients.create');
+    Route::get('/', 'ClientController@index')->name('clients.index');
+    Route::get('/{client}', 'ClientController@show')->name('clients.show');
+    Route::post('/{client}', 'ClientController@update')->name('clients.update');
+    Route::delete('/{client}', 'ClientController@destroy')->name('clients.destroy');
+    Route::post('/', 'ClientController@create')->name('clients.create');
 });
