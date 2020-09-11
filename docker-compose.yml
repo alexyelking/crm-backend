@@ -39,7 +39,4 @@ services:
     volumes:
       - ./app:/var/www/html
     command: php artisan queue:work
-  
-  
-
-    
+    working_dir: /var/www/html

@@ -1,6 +1,6 @@
 <?php
 
-namespace database\seeds\lib\fake;
+namespace database\seeds\lib;
 
 use Illuminate\Database\Seeder;
 use App\Email;

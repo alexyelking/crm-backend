@@ -1,7 +1,6 @@
 <?php
 
 use database\seeds\lib\fake\ClientsAdditionalTableSeeder;
-use database\seeds\lib\fake\EmailTableSeeder;
 use Illuminate\Database\Seeder;
 
 class FakeSeeder extends Seeder
@@ -20,6 +19,5 @@ class FakeSeeder extends Seeder
     public function run()
     {
         (new ClientsAdditionalTableSeeder($this->count))->run();
-        (new EmailTableSeeder())->run();
     }
 }
