@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Resources\Dashboard\ProgressResource;
-use App\Http\Resources\Dashboard\BarsResource;
-use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Dashboard\BarsResource;
+use App\Http\Resources\Dashboard\ProgressResource;
+use Illuminate\Support\Facades\Response;
 
 class DashboardController extends Controller
 {

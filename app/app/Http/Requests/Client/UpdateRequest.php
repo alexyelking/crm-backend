@@ -36,8 +36,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => ['string', 'min:3', 'max:50'],
-            'email' => ['string', 'min:3', 'max:50', 'email', 'unique:clients,email,'.$this->client->id],
-            'phone' => ['string', 'min:8', 'max:15', 'unique:clients,phone,'.$this->client->id],
+            'email' => ['string', 'min:3', 'max:50', 'email', 'unique:clients,email,' . $this->client->id],
+            'phone' => ['string', 'min:8', 'max:15', 'unique:clients,phone,' . $this->client->id],
         ];
     }
 }

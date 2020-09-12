@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Email;
 use App\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class EmailPolicy
 {

@@ -7,10 +7,12 @@ class FakeSeeder extends Seeder
 {
     private $count;
 
-    public function __construct($count){
+    public function __construct($count)
+    {
         $this->count = $count;
 
     }
+
     /**
      * Run the database seeds.
      *

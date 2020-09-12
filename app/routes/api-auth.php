@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,13 +18,13 @@ Route::get('/auth/me', 'AuthController@me')->name('auth.me');
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
-Route::group(["prefix"=>"emails"], function () {
+Route::group(["prefix" => "emails"], function () {
     Route::get('/', 'EmailController@index')->name('emails.index');
-    Route::get('/{email}', 'EmailController@show')->name('emails.show');
+    Route::get('/{email}', 'EmailController@show')->name('emails.show')->middleware('can:show,email');
     Route::post('/', 'EmailController@create')->name('emails.create');
 });
 
-Route::group(["prefix"=>"clients"], function (){
+Route::group(["prefix" => "clients"], function () {
     Route::get('/', 'ClientController@index')->name('clients.index');
     Route::get('/{client}', 'ClientController@show')->name('clients.show');
     Route::post('/{client}', 'ClientController@update')->name('clients.update');

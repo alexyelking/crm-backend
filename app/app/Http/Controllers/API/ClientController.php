@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Resources\Client\ClientDataResource;
-use App\Http\Resources\Client\ClientMetaResource;
+use App\Client;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Client\CreateRequest;
 use App\Http\Requests\Client\UpdateRequest;
-use Illuminate\Support\Facades\Response;
-use App\Http\Controllers\Controller;
+use App\Http\Resources\Client\ClientDataResource;
+use App\Http\Resources\Client\ClientMetaResource;
 use Illuminate\Http\Request;
-use App\Client;
+use Illuminate\Support\Facades\Response;
 
 class ClientController extends Controller
 {

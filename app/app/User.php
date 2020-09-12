@@ -14,7 +14,6 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @property \DateTime updated_at
  * @method static updateOrCreate(array $array, array $array1)
  */
-
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;

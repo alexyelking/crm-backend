@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\API;
 
 use App\Email;
-use App\Exceptions\ForbiddenException;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Email\CreateRequest;
 use App\Http\Resources\Email\EmailDataResource;
 use App\Http\Resources\Email\EmailMetaResource;
-use App\Http\Requests\Email\CreateRequest;
-use Exception;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\Request;
 use App\Mail\FeedbackMail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Response;
 
 
 class EmailController extends Controller
@@ -26,9 +24,6 @@ class EmailController extends Controller
 
     public function show(Email $email)
     {
-        if(!auth::user()->can('show', $email)){
-            throw new ForbiddenException();
-        }
         return Response::ok(["client" => new EmailDataResource($email)]);
     }
 

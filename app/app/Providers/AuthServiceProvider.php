@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Email;
 use App\Policies\EmailPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {

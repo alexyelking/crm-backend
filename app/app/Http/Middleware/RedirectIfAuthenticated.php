@@ -3,9 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Exception;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\UnauthorizedException;
 
 class RedirectIfAuthenticated
