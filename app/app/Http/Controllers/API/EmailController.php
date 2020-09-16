@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Email\CreateRequest;
 use App\Http\Resources\Email\EmailDataResource;
 use App\Http\Resources\Email\EmailMetaResource;
+use App\Http\Resources\Email\EmailOptionsResource;
 use App\Mail\FeedbackMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class EmailController extends Controller
     public function index(Request $request)
     {
         $emails = auth::user()->emails()->paginate($request->limit);
-        return Response::ok(["data" => EmailDataResource::collection($emails), "meta" => new EmailMetaResource($emails)]);
+        return Response::ok(["data" => EmailDataResource::collection($emails), "meta" => new EmailMetaResource($emails), "options" => new EmailOptionsResource($emails)]);
     }
 
     public function show(Email $email)
