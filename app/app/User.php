@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Ramsey\Collection\Collection;
 
 /**
  * @property int id
@@ -13,6 +14,9 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @property \DateTime created_at
  * @property \DateTime updated_at
  * @method static updateOrCreate(array $array, array $array1)
+ *
+ * Отношения
+ * @property Collection emails
  */
 class User extends Authenticatable implements JWTSubject
 {

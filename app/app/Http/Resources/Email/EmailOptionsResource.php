@@ -2,12 +2,28 @@
 
 namespace App\Http\Resources\Email;
 
-use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Auth;
+use App\Repositories\UserRepository;
+use App\User;
 
 class EmailOptionsResource extends JsonResource
 {
+    /**
+     * @var UserRepository
+     */
+    private $repository;
+
+    /**
+     * @var User
+     */
+    public $resource;
+
+    public function __construct($resource)
+    {
+        parent::__construct($resource);
+        $this->repository = app()->make(UserRepository::class);
+    }
+
     /**
      * Transform the resource into an array.
      *
@@ -16,15 +32,8 @@ class EmailOptionsResource extends JsonResource
      */
     public function toArray($request)
     {
-        $rest = 1;
-        $email = auth::user()->emails->last();
-        if ($email != NULL) {
-            if (!$email->created_at->lt(Carbon::now()->subMinutes(5))) {
-                $rest = 0;
-            }
-        }
         return [
-            "rest" => $rest,
+            "rest" => $this->repository->restOfEmails($this->resource),
         ];
     }
 }

@@ -52,7 +52,7 @@ class CreateRequest extends FormRequest
     {
         $email = auth::user()->emails->last();
         if ($email != NULL) {
-            if (!$email->created_at->lt(Carbon::now()->subMinutes(5))) {
+            if (!$email->created_at->lt(Carbon::now()->subMinutes(2  ))) {
                 throw new AlreadyHaveEmailTodayException();
             }
         }
