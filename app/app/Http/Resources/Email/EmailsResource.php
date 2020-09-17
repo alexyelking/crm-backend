@@ -5,10 +5,22 @@ namespace App\Http\Resources\Email;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Pagination\Paginator;
 
-class EmailResource extends JsonResource
+class EmailsResource extends JsonResource
 {
     /** @var Paginator */
     public $resource;
+
+    /**
+     * @var int
+     */
+    private $rest;
+
+    public function __construct($resource, int $rest)
+    {
+        parent::__construct($resource);
+
+        $this->rest = $rest;
+    }
 
     /**
      * Transform the resource into an array.
@@ -21,7 +33,7 @@ class EmailResource extends JsonResource
         return [
             "data" => EmailDataResource::collection($this->resource),
             "meta" => new EmailMetaResource($this->resource),
-            "options" => new EmailOptionsResource($this->resource)
+            "options" => ["rest" => $this->rest],
         ];
     }
 }
