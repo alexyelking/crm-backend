@@ -64,6 +64,6 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return Response::ok(auth()->user());
+        return Response::ok(["user" => auth()->user()->only(['name', 'email'])]);
     }
 }

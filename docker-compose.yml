@@ -13,6 +13,13 @@ services:
     ports:
       - ${APACHE2_PORT}:80
     working_dir: /var/www/html
+    depends_on:
+      - db
+    networks:
+      internal:
+        aliases:
+          - api.free.site
+
 
   composer:
     image: composer:1.6
@@ -21,17 +28,24 @@ services:
     working_dir: /var/www/html
     command: composer install --ignore-platform-reqs --no-scripts
 
+
   db:
     image: mysql
     restart: always
     volumes:
-      - ./db:/var/lib/mysql
+      - ./db/store:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/00-test-db.sql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=api_db
     ports:
       - ${MYSQL_PORT}:3306
     command: --default-authentication-plugin=mysql_native_password
+    networks:
+      internal:
+        aliases:
+          - db.free.site
+
 
   consumer:
     build: ./web
@@ -40,3 +54,26 @@ services:
       - ./app:/var/www/html
     command: php artisan queue:work
     working_dir: /var/www/html
+
+
+  test:
+    build:
+      context: .
+      dockerfile: test.dockerfile
+    depends_on:
+      - db
+    networks:
+      internal:
+        aliases:
+          - tests.free.site
+    working_dir: /var/www/html
+    command: ['bash', '-c', 'php artisan migrate:fresh --seed && php artisan db:fake 10 && ./vendor/bin/phpunit']
+
+
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.220.0/28
