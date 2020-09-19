@@ -9,23 +9,23 @@ class AuthTest extends TestCase
 {
     public function testRegister()
     {
-        $response = $this
-            ->postJson('/api/auth/register', [
-                'name' => 'itsNameExample',
-                'email' => 'its@email.example',
-                'password' => 'itsPasswordExample',
-                'password_confirmation' => 'itsPasswordExample',
-            ]);
-        $response
-            ->assertJson([
-                'status' => 0,
-                'code' => 200,
-            ]);
+        $response = $this->json('POST', '/api/auth/register', [
+            'name' => 'itsNameExample',
+            'email' => 'its@email.example',
+            'password' => 'itsPasswordExample',
+            'password_confirmation' => 'itsPasswordExample'
+        ]);
+
+        $response->assertJson([
+            'status' => 0,
+            'code' => 200,
+        ]);
     }
 
     public function testLogin()
     {
-        $response = $this->postJson('/api/auth/login', ['email' => '123@123.123', 'password' => '123123']);
+        $response = $this->json('POST', '/api/auth/login', ['email' => '123@123.123', 'password' => '123123']);
+
         $response
             ->assertJson([
                 'status' => 0,
@@ -34,19 +34,21 @@ class AuthTest extends TestCase
             ]);
     }
 
-    /*public function testMe()
+    public function testMe()
     {
-        $response = $this->getJson('/api/auth/me', ['token' => Auth::tokenById(1)]);
+        $response = $this->json('GET', '/api/auth/me', ['token' => Auth::tokenById(1)]);
+
         $response
             ->assertJson([
                 'status' => 0,
                 'code' => 200,
             ]);
-    }*/
+    }
 
     public function testLogout()
     {
-        $response = $this->postJson('/api/auth/logout', ['token' => Auth::tokenById(1)]);
+        $response = $this->json('POST', '/api/auth/logout', ['token' => Auth::tokenById(1)]);
+
         $response
             ->assertJson([
                 'status' => 0,

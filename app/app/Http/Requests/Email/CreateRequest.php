@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class CreateRequest extends FormRequest
 {
     public $count;
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -52,7 +53,7 @@ class CreateRequest extends FormRequest
     {
         $email = auth::user()->emails->last();
         if ($email != NULL) {
-            if (!$email->created_at->lt(Carbon::now()->subMinutes(2  ))) {
+            if (!$email->created_at->lt(Carbon::now()->subMinutes(2))) {
                 throw new AlreadyHaveEmailTodayException();
             }
         }

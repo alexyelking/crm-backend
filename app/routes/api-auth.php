@@ -20,14 +20,14 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
 Route::group(["prefix" => "emails"], function () {
     Route::get('/', 'EmailController@index')->name('emails.index');
-    Route::get('/{email}', 'EmailController@show')->name('emails.show')->middleware('can:show,email');
     Route::post('/', 'EmailController@create')->name('emails.create');
+    Route::get('/{email}', 'EmailController@show')->name('emails.show')->middleware('can:show,email');
 });
 
 Route::group(["prefix" => "clients"], function () {
     Route::get('/', 'ClientController@index')->name('clients.index');
+    Route::post('/', 'ClientController@create')->name('clients.create');
     Route::get('/{client}', 'ClientController@show')->name('clients.show');
     Route::post('/{client}', 'ClientController@update')->name('clients.update');
     Route::delete('/{client}', 'ClientController@destroy')->name('clients.destroy');
-    Route::post('/', 'ClientController@create')->name('clients.create');
 });

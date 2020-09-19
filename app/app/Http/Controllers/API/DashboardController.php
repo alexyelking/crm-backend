@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Response;
 
 class DashboardController extends Controller
 {
+    /**
+     * @return mixed
+     */
     public function index()
     {
         return Response::ok(["progress" => new ProgressResource($this), "bars" => new BarsResource($this)]);

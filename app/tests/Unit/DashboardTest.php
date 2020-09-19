@@ -1,18 +1,20 @@
 <?php
-//
-//namespace Tests\Unit;
-//
-//use PHPUnit\Framework\TestCase;
-//
-//class DashboardTest extends TestCase
-//{
-//    /**
-//     * A basic unit test example.
-//     *
-//     * @return void
-//     */
-//    public function testExample()
-//    {
-//        $this->assertTrue(true);
-//    }
-//}
+
+namespace Tests\Unit;
+
+use Illuminate\Support\Facades\Auth;
+use Tests\TestCase;
+
+class DashboardTest extends TestCase
+{
+    public function testIndex()
+    {
+        $response = $this->json('GET', '/api/dashboard', ['token' => Auth::tokenById(1)]);
+
+        $response
+            ->assertJson([
+                'status' => 0,
+                'code' => 200,
+            ]);
+    }
+}

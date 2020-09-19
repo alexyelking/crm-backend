@@ -17,24 +17,6 @@ use Illuminate\Support\Facades\Response;
 class AuthController extends Controller
 {
     /**
-     * @param RegisterRequest $request
-     * @return mixed
-     */
-    protected function register(RegisterRequest $request)
-    {
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        $credentials = $request->only(['email', 'password']);
-        $token = auth()->attempt($credentials);
-
-        return Response::ok(["token" => $token, "user" => auth()->user()->only(['name', 'email'])]);
-    }
-
-    /**
      * @param LoginRequest $request
      * @return mixed
      * @throws ValidationException
@@ -65,5 +47,23 @@ class AuthController extends Controller
     public function me()
     {
         return Response::ok(["user" => auth()->user()->only(['name', 'email'])]);
+    }
+
+    /**
+     * @param RegisterRequest $request
+     * @return mixed
+     */
+    protected function register(RegisterRequest $request)
+    {
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $credentials = $request->only(['email', 'password']);
+        $token = auth()->attempt($credentials);
+
+        return Response::ok(["token" => $token, "user" => auth()->user()->only(['name', 'email'])]);
     }
 }
