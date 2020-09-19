@@ -11,9 +11,7 @@ RUN apt-get update && apt-get install -y \
     && a2enmod rewrite \
     && service apache2 restart
 
+
 RUN rm -rf /var/lib/apt/lists/*
 
-COPY ./app /var/www/html
 WORKDIR /var/www/html
-
-RUN php artisan optimize --env=testing

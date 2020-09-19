@@ -57,6 +57,9 @@ services:
 
 
   test:
+    volumes:
+      - ./app:/var/www/html
+      - /var/www/html/bootstrap/cache/
     build:
       context: .
       dockerfile: test.dockerfile
@@ -67,7 +70,7 @@ services:
         aliases:
           - tests.free.site
     working_dir: /var/www/html
-    command: ['bash', '-c', 'php artisan migrate:fresh --seed && php artisan db:fake 10 && ./vendor/bin/phpunit']
+    command: ['bash', '-c', 'php artisan optimize --env=testing && php artisan migrate:fresh --seed && php artisan db:fake 10 && ./vendor/bin/phpunit']
 
 
 networks:
