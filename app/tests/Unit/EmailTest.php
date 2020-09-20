@@ -18,6 +18,7 @@ class EmailTest extends TestCase
             ]);
     }
 
+    // Сложно проверить, так как выдаёт ошибку 7 403, потому что сидер генерит письма всем людям и сразу же пытается отправить ещё одно
 //    public function testCreate()
 //    {
 //        $response = $this->json('POST', '/api/emails', ['to' => 'newmanforlife@list.ru', 'body' => 'its a emails body', 'token' => Auth::tokenById(1)]);
