@@ -1,26 +1,33 @@
-# Локальная разработка через docker-compose
-
-### Настройка и старт докера:
-
-1. Скопируй ```.env.example``` в ```.env```
-2. Укажи порты, которые у тебя свободны. Либо оставь эти. 
-3. Сбилди и запусти докер-композ ```(docker-compose up --build -d)```
-
-Докер готов.
-
-### Дополнительные, промежуточные шаги
-1. Чтобы в git не улетало куча файлов: ```(git config core.filemode false)```
-2. После билдинга надо выдать права ```(sudo chmod -R 777 *)```
-
-### Настройка проекта
-
-1. Скопируй ```.env.example``` в ```.env```
-2. Зайди в web (```docker-compose exec web bash```)
-3. Надо создать ключ (```php artisan key:generate```)
-4. Надо создать jwt ключ (```php artisan jwt:secret```)
-5. Осталось сделать миграции (```php artisan migrate```)
-6. По желанию можно запустить сидеры (```php artisan db:seed```)
-
-Всё, приложение готово принимать API запросы.
+# Customer Relationship Management
 
 
+### Настройка для локальной разработки:
+---------------------------------------
+1. Скопировать файл окружения для докер:
+> cp .env.example .env
+2. Указать свои порты, если надо
+3. Запретить гиту отслеживать права:
+> git config core.filemode false
+4. Сбилдить/запустить докер:
+> docker-compose up --build -d
+5. Ждать пока композер не отработает своё (в папке vendor должен появиться autoload)
+6. Выдать права в корне проекта:
+> sudo chmod -R 777 *
+7. Скопировать файл окружения для проекта:
+> cp .env.example .env
+8. Залезть внутрь web:
+> docker-compose exec web bash
+9. Создать ключ для приложения:
+> php artisan key:generate
+10. Создать ключ для jwt:
+> php artisan jwt:secret
+11. Запустить миграции и сидеры:
+> php artisan migrate --seed
+12. Запустить фейк сидеры, по желанию:
+> php artisan db:fake
+13. Чистим конфиги:
+> php artisan config:clear
+14. Выйти из web и полностью перезапустить докер:
+> docker-compose down && docker-compose up --build -d
+
+###### Настройка завершена.
