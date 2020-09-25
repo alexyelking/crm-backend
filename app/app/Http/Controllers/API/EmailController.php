@@ -6,7 +6,7 @@ use App\Email;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Email\CreateRequest;
 use App\Http\Resources\Email\EmailDataResource;
-use App\Http\Resources\Email\EmailsResource;
+use App\Http\Resources\Email\EmailMetaResource;
 use App\Mail\FeedbackMail;
 use App\Repositories\EmailRepository;
 use Illuminate\Http\Request;
@@ -35,7 +35,7 @@ class EmailController extends Controller
     {
         $emails = $this->repository->paginateByUser(Auth::user(), $request->limit);
         $rest = $this->repository->restByUser(Auth::user());
-        return Response::ok(new EmailsResource($emails, $rest));
+        return Response::ok(["data" => EmailDataResource::collection($emails), "meta" => new EmailMetaResource($emails), "options" => ["rest" => $rest]]);
     }
 
     /**
@@ -61,6 +61,6 @@ class EmailController extends Controller
      */
     public function show(Email $email)
     {
-        return Response::ok(["client" => new EmailDataResource($email)]);
+        return Response::ok(["email" => new EmailDataResource($email)]);
     }
 }
