@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers';
+    protected $namespace = 'App\Http\Controllers\API';
 
     /**
      * The path to the "home" route for your application.
@@ -42,25 +42,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-
-        //
-    }
-
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapWebRoutes()
-    {
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/web.php'));
+        $this->mapApiAuthRoutes();
+        $this->mapApiGuestRoutes();
     }
 
     /**
@@ -70,11 +53,26 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapApiRoutes()
+    protected function mapApiAuthRoutes()
     {
         Route::prefix('api')
-            ->middleware('api')
+            ->middleware(['api', 'auth:api'])
             ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
+            ->group(base_path('routes/api-auth.php'));
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapApiGuestRoutes()
+    {
+        Route::prefix('api')
+            ->middleware(['api', 'guest:api'])
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api-guest.php'));
     }
 }

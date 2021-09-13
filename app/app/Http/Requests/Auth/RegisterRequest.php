@@ -1,10 +1,19 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientsControllerCreateRequest extends FormRequest
+/**
+ * Class RegisterRequest
+ * @package App\Http\Requests\Auth
+ *
+ * Получаем
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ */
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +34,8 @@ class ClientsControllerCreateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:3', 'max:50'],
-            'email' => ['required', 'string', 'min:3', 'max:50', 'email', 'unique:clients'],
-            'phone' => ['required', 'string', 'min:8', 'max:15', 'unique:clients'],
+            'email' => ['required', 'string', 'min:3', 'max:50', 'email', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'max:50', 'confirmed'],
         ];
     }
 }

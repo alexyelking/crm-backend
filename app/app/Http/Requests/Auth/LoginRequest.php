@@ -1,10 +1,18 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientsControllerUpdateRequest extends FormRequest
+/**
+ * Class LoginRequest
+ * @package App\Http\Requests\Auth
+ *
+ * Получаем
+ * @property string $email
+ * @property string $password
+ */
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +32,8 @@ class ClientsControllerUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['string', 'min:3', 'max:50'],
-            'email' => ['string', 'min:3', 'max:50', 'email', 'unique:clients'],
-            'phone' => ['string', 'min:8', 'max:15', 'unique:clients'],
+            'email' => ['required', 'string', 'min:3', 'max:50', 'email'],
+            'password' => ['required', 'string', 'min:6', 'max:50'],
         ];
     }
 }

@@ -2,11 +2,22 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Ramsey\Collection\Collection;
 
+/**
+ * @property int id
+ * @property string name
+ * @property string email
+ * @property \DateTime created_at
+ * @property \DateTime updated_at
+ * @method static updateOrCreate(array $array, array $array1)
+ *
+ * Отношения
+ * @property Collection emails
+ */
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
@@ -47,4 +58,15 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    /**
+     *
+     * Get the emails for the user.
+     *
+     */
+    public function emails()
+    {
+        return $this->hasMany('App\Email');
+    }
+
 }
