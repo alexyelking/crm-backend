@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="icon/crm-icon.png" width="150" height="150" alt="SPA">
+</div>
+
 # Customer Relationship Management (Server part)
 
 ## Contents
