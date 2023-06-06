@@ -64,7 +64,7 @@ Docker and Docker-compose are required to run
 
 1. Duplicate «.env.example» and rename to «.env»
 ```
-cp .env .env.example 
+cp .env.example .env
 ```
 
 2. Specify a free port for «MYSQL» and «APACHE2», or leave the one that has already been installed
