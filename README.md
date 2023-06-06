@@ -13,11 +13,11 @@
 
 ### Status <a name="status"></a>
 
-|        Options         |      Value       |
-|:----------------------:|:----------------:|
-|    **Ready Status**    | _Not full ready_ |
-| **Development status** |    _On pause_    |
-|      **Interest**      |      _low_       |
+|               Options               |      Value       |
+|:-----------------------------------:|:----------------:|
+|      **Project ready Status**       | _Not full ready_ |
+|       **Development status**        |    _On pause_    |
+| **Interest in further development** |      _low_       |
 
 <hr>
 
