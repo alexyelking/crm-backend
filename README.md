@@ -33,27 +33,27 @@ The application has a faker and a seeder for the database, there is also a mecha
 
 **In both cases, a JWT token is returned, which is needed for further access to the application:**
 
-|      Path      | Method |                  Parameters                  |    Explanation    |
-|:--------------:|:------:|:--------------------------------------------:|:-----------------:|
-| /auth/register |  POST  | name, email, password, password_confirmation | User registration |
-|  /auth/login   |  POST  |               email, password                |    User login     |
+|        Path        | Method |                  Parameters                  |    Explanation    |
+|:------------------:|:------:|:--------------------------------------------:|:-----------------:|
+| /api/auth/register |  POST  | name, email, password, password_confirmation | User registration |
+|  /api/auth/login   |  POST  |               email, password                |    User login     |
 <br>
 
 For users:
 
-| Global path |     Path     | Method |        Parameters         |      Explanation      |
-|:-----------:|:------------:|:------:|:-------------------------:|:---------------------:|
-|      -      | /auth/logout |  POST  |           token           |      User logout      |
-|      -      |   /auth/me   |  GET   |           token           |   User information    |
-|      -      |  /dashboard  |  GET   |           token           | Dashboard information |
-|   /emails   |      /       |  GET   |           token           |  Emails index (list)  |
-|   /emails   |      /       |  POST  |      body, to, token      |     Email create      |
-|   /emails   |   /{email}   |  GET   |           token           |      Email show       |
-|  /clients   |      /       |  GET   |           token           | Clients index (list)  |
-|  /clients   |      /       |  POST  | name, email, phone, token |     Client create     |
-|  /clients   |  /{client}   |  GET   |           token           |      Client show      |
-|  /clients   |  /{client}   |  POST  |  name/email/phone, token  |     Client update     |
-|  /clients   |  /{client}   | DELETE |           token           |     Client delete     |
+| Global path  |     Path     | Method |        Parameters         |      Explanation      |
+|:------------:|:------------:|:------:|:-------------------------:|:---------------------:|
+|     /api     | /auth/logout |  POST  |           token           |      User logout      |
+|     /api     |   /auth/me   |  GET   |           token           |   User information    |
+|     /api     |  /dashboard  |  GET   |           token           | Dashboard information |
+| /api/emails  |      /       |  GET   |           token           |  Emails index (list)  |
+| /api/emails  |      /       |  POST  |      body, to, token      |     Email create      |
+| /api/emails  |   /{email}   |  GET   |           token           |      Email show       |
+| /api/clients |      /       |  GET   |           token           | Clients index (list)  |
+| /api/clients |      /       |  POST  | name, email, phone, token |     Client create     |
+| /api/clients |  /{client}   |  GET   |           token           |      Client show      |
+| /api/clients |  /{client}   |  POST  |  name/email/phone, token  |     Client update     |
+| /api/clients |  /{client}   | DELETE |           token           |     Client delete     |
 <hr>
 
 ### The algorithm for running: <a name="installation"></a>
