@@ -31,8 +31,6 @@ The application has a faker and a seeder for the database, there is also a mecha
 
 ### Implemented endpoints <a name="endpoints"></a>
 
-<h3 style="color:red">Important!</h3>
-
 **In both cases, a JWT token is returned, which is needed for further access to the application:**
 
 |      Path      | Method |                  Parameters                  |    Explanation    |
