@@ -99,7 +99,7 @@ docker-compose up --build -d
 sudo chmod -R 777 *
 ```
 
-7. Go to the «app» folder in order to duplicate «.new.example» and rename it to «.env» This «.env» file is an
+7. Go to the «app» folder in order to duplicate «.env.example» and rename it to «.env» This «.env» file is an
    environment variable file for the application itself
 
 ```
