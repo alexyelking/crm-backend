@@ -29,16 +29,16 @@ The tests in the app are created using phpunit <br>
 The application has a faker and a seeder for the database, there is also a mechanism for sending an email message through the ```mailtrap``` sandbox
 <hr>
 
-### implemented endpoints <a name="endpoints"></a>
+### Implemented endpoints <a name="endpoints"></a>
 
-For guest:
+<h3 style="color:red">Important!</h3>
+**In both cases, a JWT token is returned, which is needed for further access to the application:**
 
 |      Path      | Method |                  Parameters                  |    Explanation    |
 |:--------------:|:------:|:--------------------------------------------:|:-----------------:|
 | /auth/register |  POST  | name, email, password, password_confirmation | User registration |
 |  /auth/login   |  POST  |               email, password                |    User login     |
-
-**In both cases, the token is returned, which is needed for further access to the application.**
+<br>
 
 For users:
 
@@ -125,7 +125,8 @@ php artisan config:clear
 ```
 
 14. Exit Docker (web) with the
-```exit``` command, and completely restart Docker
+    ```exit``` command, and completely restart Docker
 > docker-compose down && docker-compose up --build -d
+<hr>
 
 ### Ready to start
