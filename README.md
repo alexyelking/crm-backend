@@ -40,19 +40,19 @@ For guest:
 
 For users:
 
-| Global path |     Path     | Method | Parameters |      Explanation      |
-|:-----------:|:------------:|:------:|:----------:|:---------------------:|
-|      -      | /auth/logout |  POST  |   token    |      User logout      |
-|      -      |   /auth/me   |  GET   |   token    |   User information    |
-|      -      |  /dashboard  |  GET   |   token    | Dashboard information |
-|   /emails   |      /       |  GET   |   token    |  Emails index (list)  |
-|   /emails   |      /       |  POST  |   token    |     Email create      |
-|   /emails   |   /{email}   |  GET   |   token    |      Email show       |
-|  /clients   |      /       |  GET   |   token    | Clients index (list)  |
-|  /clients   |      /       |  POST  |   token    |     Client create     |
-|  /clients   |  /{client}   |  GET   |   token    |      Client show      |
-|  /clients   |  /{client}   |  POST  |   token    |     Client update     |
-|  /clients   |  /{client}   | DELETE |   token    |     Client delete     |
+| Global path |     Path     | Method |        Parameters         |      Explanation      |
+|:-----------:|:------------:|:------:|:-------------------------:|:---------------------:|
+|      -      | /auth/logout |  POST  |           token           |      User logout      |
+|      -      |   /auth/me   |  GET   |           token           |   User information    |
+|      -      |  /dashboard  |  GET   |           token           | Dashboard information |
+|   /emails   |      /       |  GET   |           token           |  Emails index (list)  |
+|   /emails   |      /       |  POST  |      body, to, token      |     Email create      |
+|   /emails   |   /{email}   |  GET   |           token           |      Email show       |
+|  /clients   |      /       |  GET   |           token           | Clients index (list)  |
+|  /clients   |      /       |  POST  | name, email, phone, token |     Client create     |
+|  /clients   |  /{client}   |  GET   |           token           |      Client show      |
+|  /clients   |  /{client}   |  POST  |  name/email/phone, token  |     Client update     |
+|  /clients   |  /{client}   | DELETE |           token           |     Client delete     |
 
 ### The algorithm for running: <a name="installation"></a>
 
