@@ -29,37 +29,30 @@ The application has a faker and a seeder for the database, there is also a mecha
 
 ### implemented endpoints <a name="endpoints"></a>
 
-Endpoint template
-* [Request path][Request type][Accepted parameters][Explanation]
+For guest:
 
-For guests:
-* /auth/register - [POST][name, email, password, password_confirmation][User registration]
-* /auth/login - [POST][email, password][User login]
-In both cases, the token is returned, which is needed for further access to the application.
+|      Path      | Method |                  Parameters                  |    Explanation    |
+|:--------------:|:------:|:--------------------------------------------:|:-----------------:|
+| /auth/register |  POST  | name, email, password, password_confirmation | User registration |
+|  /auth/login   |  POST  |               email, password                |    User login     |
+
+**In both cases, the token is returned, which is needed for further access to the application.**
 
 For users:
-* [][][]
-* [][][]
-* [][][]
-* [][][]
-Route::post('/auth/logout', 'AuthController@logout')->name('auth.logout');
-Route::get('/auth/me', 'AuthController@me')->name('auth.me');
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
-
-Route::group(["prefix" => "emails"], function () {
-Route::get('/', 'EmailController@index')->name('emails.index');
-Route::post('/', 'EmailController@create')->name('emails.create');
-Route::get('/{email}', 'EmailController@show')->name('emails.show')->middleware('can:show,email');
-});
-
-Route::group(["prefix" => "clients"], function () {
-Route::get('/', 'ClientController@index')->name('clients.index');
-Route::post('/', 'ClientController@create')->name('clients.create');
-Route::get('/{client}', 'ClientController@show')->name('clients.show');
-Route::post('/{client}', 'ClientController@update')->name('clients.update');
-Route::delete('/{client}', 'ClientController@destroy')->name('clients.destroy');
-});
+| Global path |     Path     | Method | Parameters |      Explanation      |
+|:-----------:|:------------:|:------:|:----------:|:---------------------:|
+|      -      | /auth/logout |  POST  |   token    |      User logout      |
+|      -      |   /auth/me   |  GET   |   token    |   User information    |
+|      -      |  /dashboard  |  GET   |   token    | Dashboard information |
+|   /emails   |      /       |  GET   |   token    |  Emails index (list)  |
+|   /emails   |      /       |  POST  |   token    |     Email create      |
+|   /emails   |   /{email}   |  GET   |   token    |      Email show       |
+|  /clients   |      /       |  GET   |   token    | Clients index (list)  |
+|  /clients   |      /       |  POST  |   token    |     Client create     |
+|  /clients   |  /{client}   |  GET   |   token    |      Client show      |
+|  /clients   |  /{client}   |  POST  |   token    |     Client update     |
+|  /clients   |  /{client}   | DELETE |   token    |     Client delete     |
 
 ### The algorithm for running: <a name="installation"></a>
 
