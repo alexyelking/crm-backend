@@ -1,5 +1,4 @@
 # Customer Relationship Management (Server part)
-<hr>
 
 ## Contents
 
@@ -9,6 +8,7 @@
 * [Installation and launch](#installation)
   * [In the root](#root)
   * [Inside the Docker](#docker)
+<hr>
 
 ### Status <a name="status"></a>
 
@@ -17,6 +17,7 @@
 |    **Ready Status**    | _Not full ready_ |
 | **Development status** |    _On pause_    |
 |      **Interest**      |      _low_       |
+<hr>
 
 ### About application <a name="about"></a>
 
@@ -26,6 +27,7 @@ Communication with the client part takes place using JSON messages, accepting an
 The application has registration and authorization via a JWT token<br>
 The tests in the app are created using phpunit <br>
 The application has a faker and a seeder for the database, there is also a mechanism for sending an email message through the ```mailtrap``` sandbox
+<hr>
 
 ### implemented endpoints <a name="endpoints"></a>
 
@@ -53,6 +55,7 @@ For users:
 |  /clients   |  /{client}   |  GET   |           token           |      Client show      |
 |  /clients   |  /{client}   |  POST  |  name/email/phone, token  |     Client update     |
 |  /clients   |  /{client}   | DELETE |           token           |     Client delete     |
+<hr>
 
 ### The algorithm for running: <a name="installation"></a>
 
