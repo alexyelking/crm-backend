@@ -29,7 +29,7 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/00-test-db.sql
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=api_db
+      - MYSQL_DATABASE=crm_db
     ports:
       - ${MYSQL_PORT}:3306
     command: --default-authentication-plugin=mysql_native_password

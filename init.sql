@@ -1,1 +1,1 @@
-CREATE DATABASE test_db
+CREATE DATABASE crm_db
